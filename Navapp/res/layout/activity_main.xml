@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<LinearLayout xmlns:android='http://schemas.android.com/apk/res/android'
+		android:id="@+id/linearLayout1"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent" 
+		android:orientation="vertical">
+
+	    
+
+		<TextView
+			android:id="@+id/timediff"
+			android:layout_width='wrap_content'
+			android:layout_height='wrap_content'
+			android:text="timediff: "
+			android:textAppearance="?android:attr/textAppearanceLarge" />
+		
+		<View android:id="@+id/divider"
+		    android:layout_width="match_parent"
+		    android:layout_height="2dp"
+		    android:background="#AAAAAAAA"
+		    android:layout_margin="20dp"/>
+	    
+		<TextView
+			android:id="@+id/acceleration"
+			android:layout_width='wrap_content'
+			android:layout_height='wrap_content'
+			android:text="x: Y: Z:"
+			android:textAppearance="?android:attr/textAppearanceLarge" />
+		
+		<TextView
+			android:id="@+id/gyroscope"
+			android:layout_width='wrap_content'
+			android:layout_height='wrap_content'
+			android:text="x: Y: Z:"
+			android:textAppearance="?android:attr/textAppearanceLarge" />
+		
+		<TextView
+			android:id="@+id/compass"
+			android:layout_width='wrap_content'
+			android:layout_height='wrap_content'
+			android:text="Cx: Cy: Cz:"
+			android:textAppearance="?android:attr/textAppearanceLarge" />
+		
+		<View android:id="@+id/divider"
+		    android:layout_width="match_parent"
+		    android:layout_height="2dp"
+		    android:background="#AAAAAAAA"
+		    android:layout_margin="20dp"/>
+
+		<TextView
+			android:id="@+id/displacement"
+			android:layout_width='wrap_content'
+			android:layout_height='wrap_content'
+			android:text="displacement: "
+			android:textAppearance="?android:attr/textAppearanceLarge" />
+				
+	</LinearLayout>
