@@ -1,4 +1,4 @@
-package com.rnav.navapp;
+/*package com.rnav.navapp;
 
 public class point {
 
@@ -20,4 +20,4 @@ public class point {
 		return y;
 	}
 }
-
+*/

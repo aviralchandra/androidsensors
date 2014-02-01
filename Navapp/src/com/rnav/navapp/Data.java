@@ -1,4 +1,4 @@
-package com.rnav.navapp;
+/*package com.rnav.navapp;
 
 import java.util.*;
 
@@ -17,13 +17,13 @@ public class Data {
 		//Random random = new Random();
 		MainActivity main = new MainActivity();
 		
-		for(int i=0; i<100; i++) {
+	for(int i=0; i<100; i++) {
 		st[i] = main.getAccx()[i];
-		//return st[i];
+		return st[i];
 		}
 		//return random.nextFloat();
 		// TODO Auto-generated method stub
 		return st[x];
 		
 	}
-}
+}*/

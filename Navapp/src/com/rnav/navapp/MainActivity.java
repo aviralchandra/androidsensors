@@ -41,8 +41,8 @@ public class MainActivity extends Activity implements SensorEventListener{
 	/* Called When the activity is first created */
 	
 	private static GraphicalView view;
-	private Linegraph line = new Linegraph();
-	double[] test = new double[100];
+	//private Linegraph line = new Linegraph();
+	//double[] test = new double[100];
 	
 	//private point p  = new point();
 	private static Thread thread;
@@ -68,9 +68,9 @@ public class MainActivity extends Activity implements SensorEventListener{
 		gyroscope = (TextView)findViewById(R.id.gyroscope);
 		compassDisp = (TextView)findViewById(R.id.compass);
 		
-		
-		timestamp= new Timestamp(new Date().getTime());
-		thread = new Thread(){
+	}
+		//timestamp= new Timestamp(new Date().getTime());
+		/*thread = new Thread(){
 			public void run()
 			{
 			for(int i=0; i < 10; i++)
@@ -87,7 +87,7 @@ public class MainActivity extends Activity implements SensorEventListener{
 		   }
 		};
 		thread.start();
-	}
+	}*/
 	
 	
 
@@ -102,7 +102,11 @@ public class MainActivity extends Activity implements SensorEventListener{
 	public void onSensorChanged(SensorEvent event) {
 		
 		int sensorType = event.sensor.getType();
-		double samp_T  = 0.1;
+		//Timestamp newtimestamp = new Timestamp(new Date().getTime());
+		//double timediff = newtimestamp.getTime()-timestamp.getTime();
+		
+		/*
+		double samp_T  = 0.001;
 		int N = 100;
 		final double[] Rxest = new double[N];
 		double[] Ryest = new double[N];
@@ -127,10 +131,10 @@ public class MainActivity extends Activity implements SensorEventListener{
 				//	Timestamp newtimestamp = new Timestamp(new Date().getTime());
 					//double timediff = newtimestamp.getTime()-timestamp.getTime();
 			
-			/* Print timediff
+		     Print timediff
 			TextView tvTimeDiff =(TextView) findViewById(R.id.timediff);
 			timediff=timediff/(1000000);
-			tvTimeDiff.setText("Timediff: "+timediff);*/
+			tvTimeDiff.setText("Timediff: "+timediff);
 			for (int z=0; z<3; z++){
 				acc[z] = event.values[z];
 			}
@@ -141,9 +145,9 @@ public class MainActivity extends Activity implements SensorEventListener{
 			Ryest[k-1] = acc[1];
 			Rzest[k-1] = acc[2];
 			
-			Rxacc[k-1] = (Rxest[k-1]/R)*Math.cos(Math.acos(Rxest[k-1]/R));
-			Ryacc[k-1] = (Ryest[k-1]/R)*Math.cos(Math.acos(Ryest[k-1]/R));
-			Rzacc[k-1] = (Rzest[k-1]/R)*Math.cos(Math.acos(Rzest[k-1]/R));
+			Rxacc[k-1] = (Rxest[k-1])*Math.cos(Math.acos(Rxest[k-1]/R));
+			Ryacc[k-1] = (Ryest[k-1])*Math.cos(Math.acos(Ryest[k-1]/R));
+			Rzacc[k-1] = (Rzest[k-1])*Math.cos(Math.acos(Rzest[k-1]/R));
 			
 			double Racc = (Rxacc[k-1]*Rxacc[k-1]+Ryacc[k-1]*Ryacc[k-1]+Rzacc[k-1]*Rzacc[k-1]);
 			
@@ -160,16 +164,20 @@ public class MainActivity extends Activity implements SensorEventListener{
 			sensorType = Sensor.TYPE_GYROSCOPE;
 				float gyro[] = new float[] {0, 0, 0} ;
 				
-				//Timestamp newtimestamp = new Timestamp(new Date().getTime());
-				//float dT = event.timestamp-timestamp.getTime();
+				Timestamp newtimestamp = new Timestamp(new Date().getTime());
+				float dT = event.timestamp-timestamp.getTime();
 				
 				for(int m=0;m<3;m++){
 					gyro[m] = event.values[m];
 				}	
-				
-			RateAxz[k] = gyro[0];
-			RateAyz[k] = gyro[1];
-			RateAxy[k] = gyro[2];
+		
+			Axz[k] = gyro[0];
+			Ayz[k] = gyro[1];
+			Axy[k] = gyro[2];
+			
+			RateAxz[k] = (Axz[k]-Axz[k-1])/samp_T;
+			RateAyz[k] = (Ayz[k]-Ayz[k-1])/samp_T;
+			RateAxy[k] = (Axy[k]-Axy[k-1])/samp_T;
 			
 			double Rxgyro = gyro[0];
 			double Rygyro = gyro[1];
@@ -207,14 +215,15 @@ public class MainActivity extends Activity implements SensorEventListener{
 			Ryest[k] = Ryest[k]/R1;
 			Rzest[k] = Rzest[k]/R1;
 			test[k] = (Rxest[k]);
+			*/
+			//gyroscope.setText("Gx: "+ Rxest[k] +"\nGy: "+Ryest[k]+"\nGz: "+Rzest[k] );
 			
-			gyroscope.setText("ax: "+ Rxest[k] +"\nay: "+Ryest[k]+"\naz: "+Rzest[k] );
-			
-			System.out.format("%-15s%-15s%n", "x-acc");
-		}
-		
+			//System.out.format("%-15s%-15s%n", "x-acc");
+	//	}
+		/*
 			for(int i=0; i<test.length; i++) {
 				System.out.format("%-15s%-15s%n", i+1, test[i]);
+				
 			}
 	}
 	
@@ -235,8 +244,9 @@ public class MainActivity extends Activity implements SensorEventListener{
 	private void setContentView(MainActivity mainActivity) {
 		// TODO Auto-generated method stub
 		
-	}
-}
+	}*/
+//}
+
 			/*
 			
 			
@@ -257,9 +267,9 @@ public class MainActivity extends Activity implements SensorEventListener{
 			//Rzacc = Rzacc/Racc;
 																
 		
-		/*
+		
 		if (sensorType == Sensor.TYPE_GYROSCOPE){
-			float gyro[] = new float[] {0, 0, 0} ;
+			float[] gyro = new float[] {0, 0, 0} ;
 			
 		//	Timestamp newtimestamp = new Timestamp(new Date().getTime());
 			float dT = event.timestamp-timestamp.getTime();
@@ -267,6 +277,7 @@ public class MainActivity extends Activity implements SensorEventListener{
 			for(int z=0;z<3;z++){
 				gyro[z] = event.values[z];
 			}
+			
 			
 			double omegaMagnitude = (gyro[0]*gyro[0]+gyro[1]*gyro[1]+gyro[2]*gyro[2]);
 			omegaMagnitude = Math.sqrt(omegaMagnitude);
@@ -292,12 +303,28 @@ public class MainActivity extends Activity implements SensorEventListener{
 			}
 			
 				deltaRotationVector[3] = cosx;
+			
+			double[] q = new double[3];
+			q[0] = 	deltaRotationVector[0];
+			q[1] = 	deltaRotationVector[1];
+			q[2] = 	deltaRotationVector[2];	
+				
+			double[] g = new double[3];
+			g[0] = 2 * (q[1] * q[3] - q[0] * q[2]);
+			g[1] = 2 * (q[0] * q[1] + q[2] * q[3]);
+			g[2] = q[0] * q[0] - q[1] * q[1] - q[2] * q[2] + q[3] * q[3];
+			
+			sensorType = Sensor.TYPE_ACCELEROMETER; 
+				for (int z=0; z<3; z++){
+						acc[z] = event.values[z];
+					}
 						
-			gyroscope.setText("Qx: " + Double.toString(deltaRotationVector[0]) +"\nQy: " + Double.toString(deltaRotationVector[1]) + "\nQz: " + Double.toString(deltaRotationVector[2]));
+			gyroscope.setText("Qx: " + Double.toString(g[0]-acc[0]) +"\nQy: " + Double.toString(g[1]-acc[1]) + "\nQz: " + Double.toString(g[2]-acc[2]));
 			
 		}
 			}
-	
+}
+/*
 		
 		if (sensorType == Sensor.TYPE_MAGNETIC_FIELD){
 			float compass_readings[] = new float[] {0, 0, 0};

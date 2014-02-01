@@ -1,4 +1,4 @@
-package com.rnav.navapp;
+/*package com.rnav.navapp;
 import org.achartengine.ChartFactory;
 import org.achartengine.GraphicalView;
 import org.achartengine.chart.PointStyle;
@@ -48,5 +48,5 @@ public class Linegraph {
 	{
 		dataset.add(p.getX(), p.getY());
 	}
-	}
+	}*/
 
